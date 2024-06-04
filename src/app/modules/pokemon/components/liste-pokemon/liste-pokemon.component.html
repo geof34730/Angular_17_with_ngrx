@@ -1,13 +1,12 @@
 <div class="container-fluid justify-content-center">
   <div class="row justify-content-center">
-    <h3 class="text-center">Liste</h3>
+    <h3 class="text-center">Liste</h3>{{termeSelectedString}}
   </div>
 </div>
 
 
 
 <div class="container-fluid">
-
     <div class="mx-auto justify-content-center" style="width: 200px;">
       <button (click)="goCreatePokemon()" type="button" class="btn btn-success mx-auto" style="width:200px" >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -16,10 +15,10 @@
         Ajouter
       </button>
     </div>
-    <div class="mx-auto justify-content-center m-2" style="width: 500px;">
-      <input #searchBox (keyup)="searchPokemon(searchBox.value)" placeholder="filtre pokemon" style="width:500px;">
-    </div>
   </div>
+
+<app-filter-pokemon></app-filter-pokemon>
+
 
 <div class="container-fluid ">
   <div class="w-100 text-center"  *ngIf="!resultPokemon"  >Aucun pokemons trouvé</div>

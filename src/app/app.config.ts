@@ -8,7 +8,7 @@ import {InMemoryDataService} from "./in-memory-data.service";
 import {HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
 import pokemonData from "./datas/pokemon.data";
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-
+import { provideStore } from '@ngrx/store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +19,7 @@ export const appConfig: ApplicationConfig = {
        //provideHttpClient(withFetch()),
        importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(ApiInMemoryService,{dataEncapsulation:false})),
    */
+    provideStore(),
     provideRouter(routes),
     provideClientHydration(),
     importProvidersFrom(HttpClientModule),

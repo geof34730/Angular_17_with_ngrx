@@ -9,6 +9,9 @@ import ModelPokemon from "../../models/pokemon.model";
 import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap} from "rxjs";
 import pokemonData from "../../../../datas/pokemon.data";
 import * as timers from "timers";
+import {FilterPokemonComponent} from "../widgets-components/filter-pokemon/filter-pokemon.component";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../../state";
 
 
 @Component({
@@ -20,7 +23,8 @@ import * as timers from "timers";
     DatePipe,
     NgForOf,
     PokemonTypeColorPipe,
-    NgIf
+    NgIf,
+    FilterPokemonComponent
   ],
   templateUrl: './liste-pokemon.component.html',
   styleUrl: './liste-pokemon.component.css'
@@ -28,40 +32,28 @@ import * as timers from "timers";
 
 export class ListePokemonComponent implements OnInit{
   pokemonList :ModelPokemon[];
-  timerSearch :  ReturnType<typeof setTimeout>;
+
   resultPokemon: boolean = false;
-  //searchTerms = new Subject<string>();
-  //pokemons$: Observable<PokemonModel[]>;
+  termeSelectedString = this.store.select("selectedTerms");
   constructor(
     private router: Router,
-    private pokemonService : PokemonService
+    private pokemonService : PokemonService,
+    private store: Store<AppState>
   ){}
 
   ngOnInit() {
+
     this.pokemonService.getPokemonList().subscribe(pokemonList => {
       this.pokemonList = pokemonList;
       this.resultPokemon=pokemonList.length>0;
     });
+
+    console.log("************1*************");
+    console.log();
+    console.log("************2*************");
   }
 
-  searchPokemon(term:string){
-    clearTimeout(this.timerSearch);
-    this.timerSearch=setTimeout(() =>{
-      this.pokemonService.searchPokemonList(term).subscribe(pokemonlist=>{
-        this.pokemonList = pokemonlist;
-        this.resultPokemon=pokemonlist.length>0;
-      });
-    },300);
-  }
 
-  goServiceSearchPokemon(term:string){
-    this.pokemonService.searchPokemonList(term).subscribe(pokemonList => {
-        console.log("SEARCH RESULT");
-        console.table(pokemonList);
-        this.pokemonList=pokemonList;
-      }
-    )
-  }
 
 
   goToPokemonFiche(pokemon:ModelPokemon){
