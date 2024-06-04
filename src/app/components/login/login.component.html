@@ -1,0 +1,20 @@
+
+<div class="container justify-content-center mt-5">
+<form>
+  <div data-mdb-input-init class="form-outline mb-4 ">
+    {{messageForm}}
+  </div>
+  <div data-mdb-input-init class="form-outline mb-4 ">
+    <label class="form-label" for="name">Login</label>
+    <input type="text" id="name"  name="name" [(ngModel)]="name" class="form-control" />
+  </div>
+
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="password">Password</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control" />
+  </div>
+
+  <button  (click)="login()"  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4 m-auto w-25">Sign in</button>
+
+</form>
+</div>

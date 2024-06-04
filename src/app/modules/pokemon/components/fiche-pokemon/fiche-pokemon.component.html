@@ -1,0 +1,22 @@
+<div class="container-fluid justify-content-center">
+  <div *ngIf=pokemonSelected class="row justify-content-center">
+    <h3 class="text-center">Fiche {{pokemonSelected.name}}</h3>
+    <div class="w-50">
+    <img src="{{pokemonSelected.picture}}" class="card-img-top" alt="{{pokemonSelected.name}}">
+      <p class="card-text text-center">
+        Date:s <small>{{pokemonSelected.created | date | date : "dd/MM/YYYY"}}</small><br>
+        Type:
+        <span
+          *ngFor=" let type of pokemonSelected.types"
+          class="{{type | pokemonTypeColor}} m-1 p-2">
+                {{type}}
+        </span><br><br>
+        <button type="button" class="btn btn-primary m-1" (click)="goToPokemonEdit()">Edit</button>
+        <button type="button" class="btn btn-primary m-1" (click)="goToPokemonList();">Retour</button>
+      </p>
+    </div>
+  </div>
+  <div *ngIf=!pokemonSelected class="row justify-content-center">
+    pas de pokemon
+  </div>
+</div>
