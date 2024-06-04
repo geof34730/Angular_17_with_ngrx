@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import {BorderCardDirective} from "../../directives/border-card.directive";
-import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, DatePipe, NgForOf, NgIf} from "@angular/common";
 import {PokemonTypeColorPipe} from "../../pipes/pokemon-type-color.pipe";
 import PokemonModel from "../../models/pokemon.model";
 import {Router} from "@angular/router";
@@ -24,7 +24,8 @@ import {AppState} from "../../../state";
     NgForOf,
     PokemonTypeColorPipe,
     NgIf,
-    FilterPokemonComponent
+    FilterPokemonComponent,
+    AsyncPipe
   ],
   templateUrl: './liste-pokemon.component.html',
   styleUrl: './liste-pokemon.component.css'
@@ -34,7 +35,8 @@ export class ListePokemonComponent implements OnInit{
   pokemonList :ModelPokemon[];
 
   resultPokemon: boolean = false;
-  termeSelectedString = this.store.select("selectedTerms");
+
+  termeSelectedString$: Observable<string[]>;
   constructor(
     private router: Router,
     private pokemonService : PokemonService,
@@ -42,16 +44,13 @@ export class ListePokemonComponent implements OnInit{
   ){}
 
   ngOnInit() {
-
-    this.pokemonService.getPokemonList().subscribe(pokemonList => {
+     this.pokemonService.getPokemonList().subscribe(pokemonList => {
       this.pokemonList = pokemonList;
       this.resultPokemon=pokemonList.length>0;
     });
-
-    console.log("************1*************");
-    console.log();
-    console.log("************2*************");
+    this.termeSelectedString$=this.store.select("selectedTerms");
   }
+
 
 
 
