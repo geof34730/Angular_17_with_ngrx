@@ -9,6 +9,7 @@ import {HttpClientModule, provideHttpClient, withFetch} from "@angular/common/ht
 import pokemonData from "./datas/pokemon.data";
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideStore } from '@ngrx/store';
+import {filterTermsPokemonsReducer} from "./modules/state/filter-pokemons/filter-pokemons.reducer";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +20,7 @@ export const appConfig: ApplicationConfig = {
        //provideHttpClient(withFetch()),
        importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(ApiInMemoryService,{dataEncapsulation:false})),
    */
-    provideStore(),
+    provideStore({ filterTermsPokemons: filterTermsPokemonsReducer }),
     provideRouter(routes),
     provideClientHydration(),
     importProvidersFrom(HttpClientModule),

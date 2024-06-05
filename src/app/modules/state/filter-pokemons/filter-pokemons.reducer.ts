@@ -1,17 +1,13 @@
-import {createReducer, on} from '@ngrx/store';
-import {termsSelected} from './filter-pokemons.actions';
+import {Action, createReducer, on} from '@ngrx/store';
+import { setFilterTermsPokemons } from './filter-pokemons.actions';
 
+export const initialState: string = '';
 
-interface State {
-  terms: string;
-}
-
-const initialState: State = {
-  terms : ''
-};
-
-export const filterPokemonsReducer = createReducer(
+const _filterTermsPokemonsReducer = createReducer(
   initialState,
-  on(termsSelected, (state, {terms}) => ({...state, terms:state.terms}))
+  on(setFilterTermsPokemons, (state, { filterTermsPokemons }) => filterTermsPokemons)
 );
 
+export function filterTermsPokemonsReducer(state: string | undefined, action: Action) {
+  return _filterTermsPokemonsReducer(state, action);
+}
