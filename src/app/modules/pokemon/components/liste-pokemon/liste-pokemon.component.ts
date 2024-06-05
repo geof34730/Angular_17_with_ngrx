@@ -1,4 +1,4 @@
-import { Component,OnInit,OnChanges } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {BorderCardDirective} from "../../directives/border-card.directive";
 import {AsyncPipe, DatePipe, NgForOf, NgIf} from "@angular/common";
 import {PokemonTypeColorPipe} from "../../pipes/pokemon-type-color.pipe";
@@ -8,14 +8,11 @@ import ModelPokemon from "../../models/pokemon.model";
 import {Observable, Subscription} from "rxjs";
 import {FilterPokemonComponent} from "../widgets-components/filter-pokemon/filter-pokemon.component";
 import {Store} from "@ngrx/store";
-
 import {selectFilterTermsPokemons} from "../../../state/filter-pokemons/filter-terms-pokemons.selectors";
-
 
 @Component({
   selector: 'app-liste-pokemon',
   standalone: true,
- // providers:  [ PokemonService ],
   imports: [
     BorderCardDirective,
     DatePipe,
@@ -29,10 +26,9 @@ import {selectFilterTermsPokemons} from "../../../state/filter-pokemons/filter-t
   styleUrl: './liste-pokemon.component.css'
 })
 
-export class ListePokemonComponent implements OnInit{
+export class ListePokemonComponent implements OnInit, OnDestroy{
   pokemonList :ModelPokemon[];
   resultPokemon: boolean = false;
-  //newFilterTermsPokemons: string | undefined;
   filterTermsPokemons$: Observable<string> ;
   subscription: Subscription;
 
@@ -44,21 +40,23 @@ export class ListePokemonComponent implements OnInit{
 
   ngOnInit() {
     this.filterTermsPokemons$ = this.store.select(selectFilterTermsPokemons);
-
     this.pokemonService.getPokemonList().subscribe(pokemonList => {
       this.pokemonList = pokemonList;
       this.resultPokemon=pokemonList.length>0;
     });
-
     this.subscription = this.filterTermsPokemons$.subscribe((filterTermsPokemons) => {
       this.onFilterTermsPokemonsChange(filterTermsPokemons);
     });
   }
-
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
   onFilterTermsPokemonsChange(filterTermsPokemons: string) {
     console.log('filterTermsPokemons has changed:', filterTermsPokemons);
     this.goServiceSearchPokemon(filterTermsPokemons);
- }
+  }
   goToPokemonFiche(pokemon:ModelPokemon){
     this.router.navigate([`/pokemons/${pokemon.id}`])
   }
