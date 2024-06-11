@@ -9,6 +9,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideStore } from '@ngrx/store';
 import {filterTermsPokemonsReducer} from "./modules/state/filter-pokemons/filter-pokemons.reducer";
+import { LoaderInterceptor } from './loader.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +21,7 @@ export const appConfig: ApplicationConfig = {
        //provideHttpClient(withFetch()),
        importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(ApiInMemoryService,{dataEncapsulation:false})),
    */
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     provideStore({
       filterTermsPokemons: filterTermsPokemonsReducer
     }),

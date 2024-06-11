@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApiInMemoryService } from './api-in-memory.service';
+// @ts-ignore
+import { ApiInMemoryService } from "./api-in-memory.service";
 
 describe('ApiInMemoryService', () => {
   let service: ApiInMemoryService;

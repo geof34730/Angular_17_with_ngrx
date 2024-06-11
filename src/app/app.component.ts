@@ -1,10 +1,10 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
 import {Router, RouterOutlet} from "@angular/router";
 import {DatePipe, TitleCasePipe, UpperCasePipe} from "@angular/common";
 import {PokemonModule} from "./modules/pokemon/pokemon.module";
-import {PokemonService} from "./modules/pokemon/services/pokemon.service";
-
+import { LoaderService } from './services/loader.service';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -15,18 +15,24 @@ import {PokemonService} from "./modules/pokemon/services/pokemon.service";
     UpperCasePipe,
     TitleCasePipe,
     PokemonModule,
+    CommonModule,
   ],
 
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
-  ngOnInit() {
 
-  }
+
+  isLoading: Observable<boolean>;
   constructor(
     private router: Router,
-
+    private loaderService: LoaderService
   ){}
+
+
+  ngOnInit() {
+    this.isLoading = this.loaderService.isLoading;
+  }
 
   goHome(){
     this.router.navigate([`/pokemons`]);

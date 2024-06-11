@@ -1,10 +1,27 @@
+
 <nav class="navbar navbar-dark bg-primary">
   <a class="navbar-brand mx-auto" (click)="goHome()">{{'app pokemons' | titlecase}}</a>
 
 </nav>
 
-<router-outlet></router-outlet>
 
+
+<div  *ngIf="isLoading | async" class="overlay" style=" opacity:0.8;
+  background-color:#000;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1000;">
+  <div class="d-flex justify-content-center  ">
+    <div class="spinner-border text-primary" role="status" style="margin-top:250px;width: 6rem; height: 6rem; z-index: 20;">
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
 
 
 
