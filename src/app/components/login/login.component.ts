@@ -11,7 +11,7 @@ import {PokemonService} from "../../modules/pokemon/services/pokemon.service";
     FormsModule
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   name :string ="";

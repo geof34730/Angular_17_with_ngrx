@@ -14,7 +14,7 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './edit-pokemon.component.html',
-  styleUrl: './edit-pokemon.component.css'
+  styleUrl: './edit-pokemon.component.scss'
 })
 export class EditPokemonComponent {
   pokemonId : string | null;

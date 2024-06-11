@@ -11,7 +11,7 @@ import ModelPokemon from "../../models/pokemon.model";
         NgIf
     ],
   templateUrl: './create-pokemon.component.html',
-  styleUrl: './create-pokemon.component.css'
+  styleUrl: './create-pokemon.component.scss'
 })
 export class CreatePokemonComponent implements OnInit{
   pokemon: ModelPokemon | undefined;

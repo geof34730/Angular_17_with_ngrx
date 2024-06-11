@@ -21,14 +21,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
-
-
   isLoading: Observable<boolean>;
   constructor(
     private router: Router,
     private loaderService: LoaderService
   ){}
-
 
   ngOnInit() {
     this.isLoading = this.loaderService.isLoading;
@@ -38,6 +35,5 @@ export class AppComponent implements OnInit{
     this.router.navigate([`/pokemons`]);
   }
 
-
-  protected readonly Date = Date;
+ // protected readonly Date = Date;
 }

@@ -17,7 +17,7 @@ import ModelPokemon from "../../models/pokemon.model";
     PokemonTypeColorPipe
   ],
   templateUrl: './fiche-pokemon.component.html',
-  styleUrl: './fiche-pokemon.component.css'
+  styleUrl: './fiche-pokemon.component.scss'
 })
 export class FichePokemonComponent implements OnInit{
   pokemonId : string | null;

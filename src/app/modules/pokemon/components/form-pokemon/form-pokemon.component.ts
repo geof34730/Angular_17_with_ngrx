@@ -20,7 +20,7 @@ import {FormsModule} from "@angular/forms";
 
   ],
   templateUrl: './form-pokemon.component.html',
-  styleUrl: './form-pokemon.component.css'
+  styleUrl: './form-pokemon.component.scss'
 })
 export class FormPokemonComponent   implements OnInit{
   @Input() pokemon: ModelPokemon ;

@@ -5,7 +5,7 @@ import {delay, Observable, of, tap} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
-  isLogged: boolean = true
+  isLogged: boolean = false
 
 
   login(name: string, password: string):Observable<boolean>{
@@ -16,7 +16,7 @@ export class AuthService {
 
     console.log(`isLogged: ${isLogged}`)
     return of(isLogged).pipe(
-      delay(3000),
+      delay(300),
       tap(isLogged => this.isLogged = isLogged)
     );
   }

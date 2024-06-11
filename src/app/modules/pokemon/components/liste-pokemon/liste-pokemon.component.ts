@@ -23,7 +23,7 @@ import {selectFilterTermsPokemons} from "../../../state/filter-pokemons/filter-t
     AsyncPipe
   ],
   templateUrl: './liste-pokemon.component.html',
-  styleUrl: './liste-pokemon.component.css'
+  styleUrl: './liste-pokemon.component.scss'
 })
 
 export class ListePokemonComponent implements OnInit, OnDestroy{
