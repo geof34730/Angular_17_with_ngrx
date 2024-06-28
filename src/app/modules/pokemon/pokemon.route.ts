@@ -14,12 +14,3 @@ export const routesPokemons: Routes = [
   {path: "pokemons/edit/:id", component: EditPokemonComponent, canActivate: [authGuard]},
 ];
 
-
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routesPokemons),
-  ],
-})
-export class PokemonModule { }

@@ -59,7 +59,7 @@ export class FormPokemonComponent   implements OnInit{
     (($event.target as HTMLInputElement).checked) ? this.pokemon.types.push(type) : this.pokemon.types.slice(this.pokemon.types.indexOf(type),1);
   }
   isTypesValid(type:string):boolean{
-    return (!((this.pokemon.types.length == 1 && this.hasType(type)) || (this.pokemon.types.length == 3 && this.hasType(type))));
+    return (((this.pokemon.types.length == 1 && this.hasType(type)) || (this.pokemon.types.length > 3 && this.hasType(type))));
   }
   goToPokemonList(id:number | null = null){
     if(this.isCreateForm) {

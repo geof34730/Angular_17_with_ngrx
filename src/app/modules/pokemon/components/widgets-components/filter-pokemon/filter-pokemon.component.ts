@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {PokemonService} from "../../../services/pokemon.service";
-import ModelPokemon from "../../../models/pokemon.model";
 import {Store} from "@ngrx/store";
 import {setFilterTermsPokemons} from "../../../../state/filter-pokemons/filter-pokemons.actions";
 import {AsyncPipe} from "@angular/common";
@@ -26,9 +23,8 @@ export class FilterPokemonComponent implements OnInit{
 
   ngOnInit() {
     this.filterTermsPokemons$ = this.store.select(selectFilterTermsPokemons);
-
-
   }
+
   searchPokemon(term:string){
     clearTimeout(this.timerSearch);
     this.timerSearch=setTimeout(() =>{

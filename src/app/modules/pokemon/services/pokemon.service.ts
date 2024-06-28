@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import ModelPokemon from "../models/pokemon.model";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, of, tap} from "rxjs";
-import {urlToHttpOptions} from "url";
-
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +45,7 @@ export class PokemonService {
       })
     );
   }
+
   addPokemon(pokemon: ModelPokemon) : Observable<ModelPokemon | null>{
     const  httpOptions= {
       headers: new HttpHeaders(

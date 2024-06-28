@@ -23,10 +23,13 @@ export class LoginComponent {
   ){}
 
   login(){
-    this.setMessageForm();
+   // this.setMessageForm();
     this.authService.login(this.name,this.password).subscribe((isLogged: boolean) =>{
       if(isLogged){
-        this.router.navigate(["/pokemons"])
+
+        //setTimeout(() => {
+        this.router.navigate(["/pokemons"]);
+       // },1000)
       }
       else{
         this.password = "";
@@ -36,7 +39,7 @@ export class LoginComponent {
   }
   setMessageForm(){
     (this.authService.isLogged ?
-      this.messageForm = "identification en cours..."
+      this.messageForm = "Identification en cours..."
       :
       this.messageForm = "Erreur dans l'authentification !"
     )

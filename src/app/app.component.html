@@ -1,7 +1,6 @@
 
 <nav class="navbar navbar-dark bg-primary">
   <a class="navbar-brand mx-auto" (click)="goHome()">{{'app pokemons' | titlecase}}</a>
-
 </nav>
 <div  *ngIf="isLoading | async" class="overlay" style=" opacity:0.8;
   background-color:#000;

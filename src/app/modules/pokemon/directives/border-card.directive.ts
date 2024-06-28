@@ -30,12 +30,12 @@ export class BorderCardDirective {
       this.setBorderColor(this.defaultBorderColor );
   }
 
-
   setHeight(height : number){
       this.el.nativeElement.style.height = `${height}px`
-    }
-    setBorderColor(color : string){
-      this.el.nativeElement.style.border = `solid 2px ${color}`;
-    }
+  }
+
+  setBorderColor(color : string){
+    this.el.nativeElement.style.border = `solid 2px ${color}`;
+  }
 
 }

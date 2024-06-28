@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterOutlet} from "@angular/router";
 import {DatePipe, TitleCasePipe, UpperCasePipe} from "@angular/common";
-import {PokemonModule} from "./modules/pokemon/pokemon.module";
+//import {PokemonModule} from "./modules/pokemon/pokemon.module";
 import { LoaderService } from './services/loader.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
     DatePipe,
     UpperCasePipe,
     TitleCasePipe,
-    PokemonModule,
+   // PokemonModule,
     CommonModule,
   ],
 
@@ -35,5 +35,4 @@ export class AppComponent implements OnInit{
     this.router.navigate([`/pokemons`]);
   }
 
- // protected readonly Date = Date;
 }

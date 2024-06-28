@@ -11,5 +11,5 @@ $custom-colors: (
 
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
-
+@import "./global";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
